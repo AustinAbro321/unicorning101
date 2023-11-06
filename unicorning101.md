@@ -93,13 +93,13 @@ In the above example, you can see we switched to Alpine. If you search dockerhub
 
 An added benefit of going to multi-stage dockerfiles and smaller OSs for your images can result in huge reductions in image size
 
-When I run `docker images non_hardened_image`, I get 
+Running `docker images non_hardened_image` on the image created from first dockerfile we get 
 ```
 REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
 cargo        latest    22599959abb4   19 hours ago   2.73GB
 ```
 
-Alternatively when I run `docker images hardened_image` I get 
+Alternatively running `docker images hardened_image` on the image created from the hardened dockerfile we get 
 ```
 REPOSITORY    TAG       IMAGE ID       CREATED        SIZE
 cargo-multi   latest    ee92ce7340e8   19 hours ago   17.4MB
@@ -389,4 +389,4 @@ First, [install zarf](https://zarf.dev/install)
 ## Assignment 
 Package your helm chart so that it runs as a zarf package. You know you are completed with this section once your app is successfully running after being deployed as a zarf package. 
 
-This section is intentially left brief. Use the zarf docs and examples in the docs to guide you on creating a solution. If the docs are insufficient please give us feedback to improve! 
+This section is intentially left brief. Use the [zarf docs](https://docs.zarf.dev/docs/zarf-overview) and examples in the docs to guide you on creating a solution. If the docs are insufficient please give us feedback to improve! 

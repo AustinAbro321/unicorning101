@@ -7,7 +7,7 @@ benefits:
 
 
 
-This can be extended to cover a lot
+This can be extended to cover a lot more
 - DUBBD 
 - grafana monitoring 
 - pepr
