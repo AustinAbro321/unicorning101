@@ -1,11 +1,12 @@
-# Getting started
+# Unicorning 101 
 
-You are going to create a new Hello World project using all the concepts you learned sparkle academy and more! 
+You are going to create a new Hello World project using all the concepts you learned in sparkle academy and more! 
 
 ## Table of contents 
 - Create a Hello World application, any language
 - Containerize that application
 - harden that container and make a multi-stage build if applicable
+- Publish your image to a container registry
 - k8ify that application to make it run in a k3d cluster
 - add isitio to the application so it's being sent through by a virtual service
 - wrap our application in a helm chart
@@ -124,7 +125,7 @@ Now it's finally time to deploy our application in Kubernetes. Things are going 
 
 First, we are going to [install k3d](https://k3d.io/v5.6.0/#releases). This is a tool we use often at defense unicorns for local testing. It creates a small k3s cluster within docker. If that's confusing don't worry, while k3d is generally not suitable for production it's a great way to easily set up a cluster to deploy our code. 
 
-Assignment: 
+## Assignment 
 Create a deployment and service for your application. You know you are done when your app is running as a deployment in Kubernetes and you can view it in your browser.
 
 Getting the application to show up on your browser from k3d can be tricky. We recommend following this guide after your service is configured. https://k3d.io/v5.4.6/usage/exposing_services/
@@ -167,8 +168,8 @@ spec:
           number: 8080
 ```
 
-Assignment: 
-Make a virtual service for your application. You can call it whatever you want. We are going to cheat somewhat to get it to work in k3d with a real domain.
+## Assignment 
+Make a virtual service for your application. We are going to cheat somewhat to get it to work in k3d with a real domain.
 
 Usually, it is hard to get isitio to work as intended with real URLs on a local cluster. Locally we don't have DNS services or a load balancer that points to our cluster. Without this we can't send reqeusts to our cluster that istio can parse through.  
 
@@ -373,7 +374,7 @@ Beyond just the deployment there is a lot in the chart.
 
 This assignment is broken into two parts
 
-Part 1 - Get the chart working. Doesn't have to be as clean as you would want it. You know you are completed with this section when your app is accessible as it was in the previous section and was stood up using *helm install*
+Part 1 - Get the chart working. Doesn't have to be as clean as you would want it. You should not include the cert or isitio gateway your chart. They should be kept logically separate from the app. You know you are completed with this section when your app is accessible as it was in the previous section and was stood up using *helm install*.
 
 Part 2 - We are going to simply the chart. Delete the hpa.yaml, ingress.yaml, and serviceaccount.yaml. Generally, these files will be included in a helm chart you create, but we're going to delete them in our Hello World app for simplicity. It also gives us a good opportunity to practice editing our chart. Make sure you also delete the service account, autoscaling, and ingress fields where they exist throughout the chart. You will encounter errors if you don't fully delete all the references to the values of these files. This is to be expected, the helm cli should guide you toward what you need to do to fix it. Again you are completed with this section when your app runs from a successful helm install/update
 
@@ -387,3 +388,5 @@ First, [install zarf](https://zarf.dev/install)
 
 ## Assignment 
 Package your helm chart so that it runs as a zarf package. You know you are completed with this section once your app is successfully running after being deployed as a zarf package. 
+
+This section is intentially left brief. Use the zarf docs and examples in the docs to guide you on creating a solution. If the docs are insufficient please give us feedback to improve! 
