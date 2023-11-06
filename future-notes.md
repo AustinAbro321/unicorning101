@@ -1,0 +1,2 @@
+- use gitlab as a hook for open source but not free 
+- markdown and match items up for clarity on what is what
